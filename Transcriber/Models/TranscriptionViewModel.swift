@@ -57,8 +57,12 @@ final class TranscriptionViewModel: ObservableObject {
 
     /// Supported audio file types for the file picker
     var supportedAudioTypes: [UTType] {
-        [.audio, .mp3, .wav, .aiff, .mpeg4Audio, .aac] +
-        SupportedAudioFormat.allUTTypes
+        var types: [UTType] = [.audio, .mp3, .wav, .aiff, .mpeg4Audio]
+        if let aacType = UTType("public.aac-audio") {
+            types.append(aacType)
+        }
+        types.append(contentsOf: SupportedAudioFormat.allUTTypes.compactMap { $0 })
+        return types
     }
 
     // MARK: - File Management

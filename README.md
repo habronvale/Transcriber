@@ -32,14 +32,29 @@ brew install whisper-cpp
 
 ### 2. Download Whisper Models
 
-Download the Whisper model you want to use:
+Download the Whisper model you want to use. The models are hosted on Hugging Face:
 
 ```bash
-# For the base model (recommended for most uses)
-whisper-cpp-download-ggml-model base
+# Create models directory
+mkdir -p ~/Library/Application\ Support/Transcriber/Models
 
-# Other options: tiny, small, medium, large
-whisper-cpp-download-ggml-model small
+# Download base model (recommended, ~142MB)
+curl -L "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin" \
+  -o ~/Library/Application\ Support/Transcriber/Models/ggml-base.bin
+
+# Alternative: Download tiny model (faster, ~75MB)
+curl -L "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin" \
+  -o ~/Library/Application\ Support/Transcriber/Models/ggml-tiny.bin
+
+# Alternative: Download small model (more accurate, ~466MB)
+curl -L "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin" \
+  -o ~/Library/Application\ Support/Transcriber/Models/ggml-small.bin
+```
+
+You can also use the `whisper` command directly if you have OpenAI Whisper installed via pip:
+
+```bash
+pip install openai-whisper
 ```
 
 ### 3. Build the Application

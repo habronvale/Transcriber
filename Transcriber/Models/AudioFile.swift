@@ -99,7 +99,7 @@ enum SupportedAudioFormat: String, CaseIterable {
         case .mp3: return .mp3
         case .m4a: return .mpeg4Audio
         case .wav: return .wav
-        case .aac: return .aac
+        case .aac: return UTType("public.aac-audio")
         case .flac: return UTType("org.xiph.flac")
         case .ogg: return UTType("org.xiph.ogg-vorbis")
         case .wma: return UTType("com.microsoft.windows-media-wma")
