@@ -90,4 +90,4 @@ Temporary Items
 
 # Whisper models (too large to commit)
 *.bin
-Models/
+WhisperModels/
